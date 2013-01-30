@@ -1,4 +1,4 @@
-Optimus: optimus
+Optimus: python
 ================
 
 Use
