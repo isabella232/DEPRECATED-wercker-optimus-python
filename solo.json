@@ -4,6 +4,7 @@
   },
   "run_list": [
     "recipe[apt]",
+    "recipe[wercker-essential]",
     "recipe[wercker-aptkey::default]",
     "recipe[python::default]",
     "recipe[wercker-virtualenv]",
