@@ -3,15 +3,15 @@
 	"version" : "0.0.1",
 	"stackInfo" :
   	{
-      "stackVersions" : ["0.0.0"],
-      "defaultVersion" : "0.0.0",
+      "stackVersions" : ["2.7"],
+      "defaultVersion" : "2.7",
       "versionMapping": [
-          {"0" : "0.0.0"}
+          {"2" : "2.7"}
       ]
   	},
   "isPrivate" : false,
-  "mainDetect" : [ {"files" : ["optimus.json"]}],
+  "mainDetect" : [ {"files" : ["requirements.txt"]}, {"files" : ["setup.py"]}],
   "supportDetect" : [],
-  "packageIgnore" : [],
+  "packageIgnore" :  [ ".idea", ".git", ".gitignore", ".gitmodules"],
   "priority" : 1000
 }

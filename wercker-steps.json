@@ -1,32 +1,24 @@
 {
-  "platformSteps" : [],
-  "dependencySteps" : [
-    {"name" : "cookbooks", "type" : "commands-step", "blocking" : false,
+  "platformSteps" : [
+    {"name" : "platform", "type" : "commands-step", "blocking" : true,
       "options" : {
-        "dependentOnFile" : "Berksfile",
+        "commands" : [
+          "sudo chown ubuntu -R /build",
+          "source ~/.virtualenv/python$WERCKER_PLATFORM_VERSION/bin/activate",
+          "python --version",
+          "pip --version",
+          "cd $WERCKER_ROOT"
+        ]}}],
+  "dependencySteps" : [
+    {"name" : "pip_install", "type" : "commands-step", "blocking" : false,
+      "options" : {
+        "dependentOnFile" : "requirements.txt",
         "commands" : [
           "cd $WERCKER_ROOT",
-          "berks install -p cookbooks"
+          "pip install -r requirements.txt"
         ]}}
   ],
   "testSteps" : [
-    {"name" : "does_optimus_json_exist", "type" : "commands-step", "blocking" : false,
-      "options" : {
-        "commands" : [
-          "cd $WERCKER_ROOT",
-          "test -e optimus.json"
-        ]}},
-    {"name" : "json_lint_optimus", "type" : "commands-step", "blocking" : false,
-      "options" : {
-        "commands" : [
-          "cd $WERCKER_ROOT",
-          "cat optimus.json | python -mjson.tool"
-        ]}},
-    {"name" : "json_lint_steps", "type" : "commands-step", "blocking" : false,
-      "options" : {
-        "dependentOnFile" : "wercker-steps.json",
-        "commands" : [
-          "cat wercker-steps.json | python -mjson.tool"
-        ]}}
+    {"name" : "unit_test", "type" : "pytest-step", "blocking" : false}
   ]
 }
