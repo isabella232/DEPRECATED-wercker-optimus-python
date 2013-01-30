@@ -1,4 +1,14 @@
 {
-
-  "run_list": ["apt", "build-essential", "berkshelf" ]
+  "apt": {
+    "mirror": "us-east-1.ec2"
+  },
+  "run_list": [
+    "recipe[apt]",
+    "recipe[wercker-aptkey::default]",
+    "recipe[python::default]",
+    "recipe[wercker-virtualenv]",
+    "recipe[wercker-django::default]",
+    "recipe[mysql::client]",
+    "recipe[postgresql::client]"
+  ]
 }
