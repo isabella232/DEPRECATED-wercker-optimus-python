@@ -1,24 +1,39 @@
 {
-  "platformSteps" : [
-    {"name" : "platform", "type" : "commands-step", "blocking" : true,
-      "options" : {
-        "commands" : [
+  "platformSteps": [
+    {
+      "name": "platform",
+      "type": "commands-step",
+      "blocking": true,
+      "options": {
+        "commands": [
           "sudo chown ubuntu -R /build",
           "source ~/.virtualenv/python$WERCKER_PLATFORM_VERSION/bin/activate",
           "python --version",
           "pip --version",
           "cd $WERCKER_ROOT"
-        ]}}],
-  "dependencySteps" : [
-    {"name" : "pip_install", "type" : "commands-step", "blocking" : false,
-      "options" : {
-        "dependentOnFile" : "requirements.txt",
-        "commands" : [
+        ]
+      }
+    }
+  ],
+  "dependencySteps": [
+    {
+      "name": "pip install",
+      "type": "commands-step",
+      "blocking": false,
+      "options": {
+        "dependentOnFile": "requirements.txt",
+        "commands": [
           "cd $WERCKER_ROOT",
           "pip install -r requirements.txt"
-        ]}}
+        ]
+      }
+    }
   ],
-  "testSteps" : [
-    {"name" : "unit_test", "type" : "pytest-step", "blocking" : false}
+  "testSteps": [
+    {
+      "name": "unit test",
+      "type": "pytest-step",
+      "blocking": false
+    }
   ]
 }
