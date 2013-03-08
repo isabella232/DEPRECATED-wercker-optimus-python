@@ -1,17 +1,36 @@
 {
-	"name" : "python",
-	"version" : "0.0.2",
-	"stackInfo" :
-  	{
-      "stackVersions" : ["2.7"],
-      "defaultVersion" : "2.7",
-      "versionMapping": [
-          {"2" : "2.7"}
+  "name": "python",
+  "version": "0.0.3",
+  "stackInfo": {
+    "stackVersions": [
+      "2.7"
+    ],
+    "defaultVersion": "2.7",
+    "versionMapping": [
+      {
+        "2": "2.7"
+      }
+    ]
+  },
+  "isPrivate": false,
+  "mainDetect": [
+    {
+      "files": [
+        "requirements.txt"
       ]
-  	},
-  "isPrivate" : false,
-  "mainDetect" : [ {"files" : ["requirements.txt"]}, {"files" : ["setup.py"]}],
-  "supportDetect" : [],
-  "packageIgnore" :  [ ".idea", ".git", ".gitignore", ".gitmodules"],
-  "priority" : 1000
+    },
+    {
+      "files": [
+        "setup.py"
+      ]
+    }
+  ],
+  "supportDetect": [],
+  "packageIgnore": [
+    ".idea",
+    ".git",
+    ".gitignore",
+    ".gitmodules"
+  ],
+  "priority": 1000
 }
